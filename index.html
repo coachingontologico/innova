@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Innova tu manera de emprender</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azul-profundo:#0B1F4B;
+    --azul-electrico:#1E5AFF;
+    --azul-cielo:#E7EFFF;
+    --blanco:#FFFFFF;
+    --gris-texto:#4A5568;
+    --linea:#D7E2FA;
+    --font-display:'Sora', sans-serif;
+    --font-body:'Inter', sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    background:var(--blanco);
+    color:var(--azul-profundo);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{background:var(--azul-electrico); color:var(--blanco);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:linear-gradient(160deg, var(--azul-profundo) 0%, #123A8C 55%, var(--azul-electrico) 100%);
+    color:var(--blanco);
+    padding:5rem 1.5rem 4.5rem;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, transparent 1px 80px),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 1px, transparent 1px 80px);
+    pointer-events:none;
+  }
+  .hero-eyebrow{
+    position:relative;
+    display:inline-block;
+    font-family:var(--font-body);
+    font-size:.78rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:#AFC6FF;
+    margin-bottom:1.1rem;
+    font-weight:600;
+  }
+  .hero h1{
+    position:relative;
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(2.1rem, 5.5vw, 3.4rem);
+    line-height:1.12;
+    margin:0 auto;
+    max-width:760px;
+  }
+  .hero p.lead{
+    position:relative;
+    max-width:520px;
+    margin:1.3rem auto 0;
+    color:#C9D8FF;
+    font-size:1.02rem;
+    line-height:1.6;
+  }
+
+  /* ---------- LAYOUT GENERAL ---------- */
+  main{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 1.5rem;
+  }
+
+  section{
+    padding:3.6rem 0;
+    border-bottom:1px solid var(--linea);
+  }
+  section:last-of-type{border-bottom:none;}
+
+  .section-kicker{
+    font-family:var(--font-body);
+    font-size:.75rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--azul-electrico);
+    font-weight:700;
+    margin-bottom:.5rem;
+  }
+
+  .section-title{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:1.65rem;
+    color:var(--azul-profundo);
+    margin:0 0 .6rem;
+  }
+
+  .section-desc{
+    color:var(--gris-texto);
+    font-size:.98rem;
+    line-height:1.65;
+    margin:0 0 1.5rem;
+    max-width:60ch;
+  }
+
+  .hint{
+    display:flex;
+    gap:.55rem;
+    align-items:flex-start;
+    background:var(--azul-cielo);
+    border:1px solid var(--linea);
+    border-radius:10px;
+    padding:.85rem 1rem;
+    margin-bottom:1.1rem;
+    font-size:.88rem;
+    color:#2B4C9C;
+    line-height:1.5;
+  }
+  .hint svg{flex:none; margin-top:.15rem;}
+
+  textarea{
+    width:100%;
+    min-height:110px;
+    resize:vertical;
+    border:1.5px solid var(--linea);
+    border-radius:12px;
+    padding:.9rem 1rem;
+    font-family:var(--font-body);
+    font-size:.96rem;
+    color:var(--azul-profundo);
+    background:var(--blanco);
+    transition:border-color .15s ease, box-shadow .15s ease;
+  }
+  textarea:focus{
+    outline:none;
+    border-color:var(--azul-electrico);
+    box-shadow:0 0 0 3px rgba(30,90,255,.15);
+  }
+  textarea::placeholder{color:#9AA9C4;}
+
+  .btn-enviar{
+    margin-top:.9rem;
+    display:inline-flex;
+    align-items:center;
+    gap:.55rem;
+    background:var(--azul-electrico);
+    color:var(--blanco);
+    border:none;
+    border-radius:999px;
+    padding:.75rem 1.5rem;
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:.92rem;
+    cursor:pointer;
+    transition:transform .12s ease, background .15s ease, box-shadow .15s ease;
+    box-shadow:0 6px 16px rgba(30,90,255,.25);
+  }
+  .btn-enviar:hover{background:#1948D6; transform:translateY(-1px);}
+  .btn-enviar:active{transform:translateY(0);}
+  .btn-enviar:focus-visible{outline:3px solid var(--azul-profundo); outline-offset:2px;}
+  .btn-enviar svg{flex:none;}
+
+  .btn-enviar.sent{background:#159A5B; box-shadow:0 6px 16px rgba(21,154,91,.25);}
+
+  /* ---------- BLOQUE CON LETRA (OSAR / AIDA) ---------- */
+  .modelo-intro{padding-bottom:1rem;}
+  .modelo-intro .section-title{font-size:1.9rem;}
+
+  .letra-card{
+    display:flex;
+    gap:1.1rem;
+    padding:2rem 0;
+    border-top:1px solid var(--linea);
+  }
+  .letra-card:first-of-type{border-top:none;}
+
+  .letra-badge{
+    flex:none;
+    width:52px;
+    height:52px;
+    border-radius:14px;
+    background:var(--azul-profundo);
+    color:var(--blanco);
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:1.5rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .letra-content{flex:1; min-width:0;}
+  .letra-titulo{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:1.15rem;
+    margin:.3rem 0 .3rem;
+    color:var(--azul-profundo);
+  }
+  .letra-desc{
+    color:var(--gris-texto);
+    font-size:.92rem;
+    line-height:1.6;
+    margin:0 0 1rem;
+  }
+
+  /* ---------- CIERRE / INSTAGRAM ---------- */
+  .cierre{
+    text-align:center;
+    padding:3.6rem 0 4.5rem;
+  }
+  .cierre .section-title{margin-bottom:.4rem;}
+
+  .btn-instagram{
+    margin-top:1.6rem;
+    display:inline-flex;
+    align-items:center;
+    gap:.6rem;
+    background:linear-gradient(135deg, var(--azul-profundo), var(--azul-electrico));
+    color:var(--blanco);
+    text-decoration:none;
+    border-radius:999px;
+    padding:.85rem 1.8rem;
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:.96rem;
+    box-shadow:0 8px 20px rgba(11,31,75,.25);
+    transition:transform .12s ease;
+  }
+  .btn-instagram:hover{transform:translateY(-2px);}
+  .cierre small{
+    display:block;
+    margin-top:.9rem;
+    color:var(--gris-texto);
+    font-size:.82rem;
+  }
+
+  footer{
+    text-align:center;
+    padding:2rem 1.5rem 2.5rem;
+    color:#9AA9C4;
+    font-size:.8rem;
+  }
+
+  @media (max-width:520px){
+    .letra-card{gap:.8rem;}
+    .letra-badge{width:44px; height:44px; font-size:1.25rem; border-radius:12px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="hero-eyebrow">Coaching · Crecer compartiendo</span>
+  <h1>Innova tu manera de emprender</h1>
+  <p class="lead">Un espacio para pensar tu negocio en profundidad y compartirlo con tu entrenador, paso a paso.</p>
+</header>
+
+<main>
+
+  <!-- MANERA DE HACER -->
+  <section>
+    <div class="section-kicker">Punto de partida</div>
+    <h2 class="section-title">Manera de hacer</h2>
+    <p class="section-desc">Contá exactamente qué hacés en tu negocio: tus tareas, tu rutina, cómo trabajás día a día.</p>
+    <textarea id="hacer" placeholder="Escribí acá qué hacés en tu negocio..."></textarea>
+    <br>
+    <button class="btn-enviar" onclick="enviar('hacer','*Manera de hacer*')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 005.64 1.44h.01c6.54 0 11.85-5.3 11.85-11.84 0-3.16-1.24-6.13-3.38-8.44zM12.05 21.6a9.7 9.7 0 01-4.95-1.36l-.35-.21-3.8 1 1.01-3.7-.23-.38a9.75 9.75 0 01-1.5-5.16c0-5.39 4.39-9.77 9.79-9.77 2.61 0 5.07 1.02 6.92 2.87a9.72 9.72 0 012.86 6.9c0 5.4-4.39 9.81-9.75 9.81zm5.35-7.34c-.29-.15-1.73-.86-2-.96-.27-.1-.46-.15-.66.15-.2.29-.76.96-.93 1.16-.17.2-.34.22-.63.07-.29-.15-1.23-.46-2.34-1.46-.87-.78-1.45-1.74-1.62-2.03-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.07-.15-.66-1.61-.9-2.2-.24-.58-.48-.5-.66-.5-.17-.01-.37-.01-.56-.01-.2 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.45s1.05 2.84 1.19 3.04c.15.2 2.06 3.16 5 4.42.7.3 1.24.48 1.67.61.7.22 1.34.19 1.84.12.56-.08 1.73-.71 1.98-1.39.24-.68.24-1.27.17-1.39-.07-.13-.26-.2-.55-.35z"/></svg>
+      Enviar al entrenador
+    </button>
+  </section>
+
+  <!-- MANERA DE SER -->
+  <section>
+    <div class="section-kicker">Lo que llevás a todos lados</div>
+    <h2 class="section-title">Manera de ser</h2>
+    <p class="section-desc">Más allá de las tareas, hay una forma de ser que te acompaña siempre: tu actitud, tus valores, cómo te mostrás ante los demás.</p>
+    <div class="hint">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1E5AFF" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      <span>Tip: pensá en esa forma de ser que no cambia según el lugar donde estés — en tu negocio, en tu casa, con tus amigos. Esa es la que buscamos escribir acá.</span>
+    </div>
+    <textarea id="ser" placeholder="Escribí acá tu manera de ser..."></textarea>
+    <br>
+    <button class="btn-enviar" onclick="enviar('ser','*Manera de ser*')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 005.64 1.44h.01c6.54 0 11.85-5.3 11.85-11.84 0-3.16-1.24-6.13-3.38-8.44zM12.05 21.6a9.7 9.7 0 01-4.95-1.36l-.35-.21-3.8 1 1.01-3.7-.23-.38a9.75 9.75 0 01-1.5-5.16c0-5.39 4.39-9.77 9.79-9.77 2.61 0 5.07 1.02 6.92 2.87a9.72 9.72 0 012.86 6.9c0 5.4-4.39 9.81-9.75 9.81zm5.35-7.34c-.29-.15-1.73-.86-2-.96-.27-.1-.46-.15-.66.15-.2.29-.76.96-.93 1.16-.17.2-.34.22-.63.07-.29-.15-1.23-.46-2.34-1.46-.87-.78-1.45-1.74-1.62-2.03-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.07-.15-.66-1.61-.9-2.2-.24-.58-.48-.5-.66-.5-.17-.01-.37-.01-.56-.01-.2 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.45s1.05 2.84 1.19 3.04c.15.2 2.06 3.16 5 4.42.7.3 1.24.48 1.67.61.7.22 1.34.19 1.84.12.56-.08 1.73-.71 1.98-1.39.24-.68.24-1.27.17-1.39-.07-.13-.26-.2-.55-.35z"/></svg>
+      Enviar al entrenador
+    </button>
+  </section>
+
+  <!-- MODELO OSAR -->
+  <section class="modelo-intro">
+    <div class="section-kicker">Modelo de coaching</div>
+    <h2 class="section-title">Modelo OSAR</h2>
+    <p class="section-desc">Es un modelo para alcanzar resultados — y también para ver qué está fallando cuando no los logramos. Se lee de atrás para adelante: el Observador genera un Sistema, el Sistema habilita ciertas Acciones, y las Acciones producen (o no) el Resultado.</p>
+
+    <div class="letra-card">
+      <div class="letra-badge">R</div>
+      <div class="letra-content">
+        <h3 class="letra-titulo">Resultado</h3>
+        <p class="letra-desc">¿Cuál es tu objetivo? Siempre tiene que ser algo concreto que querés generar.</p>
+        <textarea id="osar-r" placeholder="Escribí tu resultado / objetivo..."></textarea>
+        <br>
+        <button class="btn-enviar" onclick="enviar('osar-r','*OSAR – Resultado*')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 005.64 1.44h.01c6.54 0 11.85-5.3 11.85-11.84 0-3.16-1.24-6.13-3.38-8.44zM12.05 21.6a9.7 9.7 0 01-4.95-1.36l-.35-.21-3.8 1 1.01-3.7-.23-.38a9.75 9.75 0 01-1.5-5.16c0-5.39 4.39-9.77 9.79-9.77 2.61 0 5.07 1.02 6.92 2.87a9.72 9.72 0 012.86 6.9c0 5.4-4.39 9.81-9.75 9.81z"/></svg>
+          Enviar al entrenador
+        </button>
+      </div>
+    </div>
+
+    <div class="letra-card">
+      <div class="letra-badge">A</div>
+      <div class="letra-content">
+        <h3 class="letra-titulo">Acciones</h3>
+        <p class="letra-desc">Las técnicas o métodos que usás en tu negocio para alcanzar tu objetivo (o los que usarías).</p>
+        <textarea id="osar-a" placeholder="Escribí tus acciones..."></textarea>
+        <br>
+        <button class="btn-enviar" onclick="enviar('osar-a','*OSAR – Acciones*')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 005.64 1.44h.01c6.54 0 11.85-5.3 11.85-11.84 0-3.16-1.24-6.13-3.38-8.44zM12.05 21.6a9.7 9.7 0 01-4.95-1.36l-.35-.21-3.8 1 1.01-3.7-.23-.38a9.75 9.75 0 01-1.5-5.16c0-5.39 4.39-9.77 9.79-9.77 2.61 0 5.07 1.02 6.92 2.87a9.72 9.72 0 012.86 6.9c0 5.4-4.39 9.81-9.75 9.81z"/></svg>
+          Enviar al entrenador
+        </button>
+      </div>
+    </div>
+
+    <div class="letra-card">
+      <div class="letra-badge">S</div>
+      <div class="letra-content">
+        <h3 class="letra-titulo">Sistema</h3>
+        <p class="letra-desc">Todo lo que te rodea: dónde naciste, la gente con la que estás, lo que escuchás, mirás y leés, tu cultura.</p>
+        <textarea id="osar-s" placeholder="Escribí tu sistema..."></textarea>
+        <br>
+        <button class="btn-enviar" onclick="enviar('osar-s','*OSAR – Sistema*')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 005.64 1.44h.01c6.54 0 11.85-5.3 11.85-11.84 0-3.16-1.24-6.13-3.38-8.44zM12.05 21.6a9.7 9.7 0 01-4.95-1.36l-.35-.21-3.8 1 1.01-3.7-.23-.38a9.75 9.75 0 01-1.5-5.16c0-5.39 4.39-9.77 9.79-9.77 2.61 0 5.07 1.02 6.92 2.87a9.72 9.72 0 012.86 6.9c0 5.4-4.39 9.81-9.75 9.81z"/></svg>
+          Enviar al entrenador
+        </button>
+      </div>
+    </div>
+
+    <div class="letra-card">
+      <div class="letra-badge">O</div>
+      <div class="letra-content">
+        <h3 class="letra-titulo">Observador</h3>
+        <p class="letra-desc">La persona que lleva a cabo la acción: quien siente, cree y espera. ¿Cómo sos vos como observador?</p>
+        <textarea id="osar-o" placeholder="Escribí sobre tu observador..."></textarea>
+        <br>
+        <button class="btn-enviar" onclick="enviar('osar-o','*OSAR – Observador*')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 005.64 1.44h.01c6.54 0 11.85-5.3 11.85-11.84 0-3.16-1.24-6.13-3.38-8.44zM12.05 21.6a9.7 9.7 0 01-4.95-1.36l-.35-.21-3.8 1 1.01-3.7-.23-.38a9.75 9.75 0 01-1.5-5.16c0-5.39 4.39-9.77 9.79-9.77 2.61 0 5.07 1.02 6.92 2.87a9.72 9.72 0 012.86 6.9c0 5.4-4.39 9.81-9.75 9.81z"/></svg>
+          Enviar al entrenador
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODELO AIDA -->
+  <section class="modelo-intro">
+    <div class="section-kicker">Modelo de ventas</div>
+    <h2 class="section-title">Modelo AIDA</h2>
+    <p class="section-desc">Es el embudo, los pasos por los que pasa un prospecto hasta convertirse en cliente — y cómo lo acompañás después.</p>
+
+    <div class="letra-card">
+      <div class="letra-badge">A</div>
+      <div class="letra-content">
+        <h3 class="letra-titulo">Atención</h3>
+        <p class="letra-desc">¿Cómo llamás la atención de un potencial cliente?</p>
+        <textarea id="aida-a1" placeholder="Escribí cómo llamás la atención..."></textarea>
+        <br>
+        <button class="btn-enviar" onclick="enviar('aida-a1','*AIDA – Atención*')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 005.64 1.44h.01c6.54 0 11.85-5.3 11.85-11.84 0-3.16-1.24-6.13-3.38-8.44zM12.05 21.6a9.7 9.7 0 01-4.95-1.36l-.35-.21-3.8 1 1.01-3.7-.23-.38a9.75 9.75 0 01-1.5-5.16c0-5.39 4.39-9.77 9.79-9.77 2.61 0 5.07 1.02 6.92 2.87a9.72 9.72 0 012.86 6.9c0 5.4-4.39 9.81-9.75 9.81z"/></svg>
+          Enviar al entrenador
+        </button>
+      </div>
+    </div>
+
+    <div class="letra-card">
+      <div class="letra-badge">I</div>
+      <div class="letra-content">
+        <h3 class="letra-titulo">Interés</h3>
+        <p class="letra-desc">Acá hablás de tu producto o servicio: ¿cómo generás interés en él?</p>
+        <textarea id="aida-i" placeholder="Escribí cómo generás interés..."></textarea>
+        <br>
+        <button class="btn-enviar" onclick="enviar('aida-i','*AIDA – Interés*')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 005.64 1.44h.01c6.54 0 11.85-5.3 11.85-11.84 0-3.16-1.24-6.13-3.38-8.44zM12.05 21.6a9.7 9.7 0 01-4.95-1.36l-.35-.21-3.8 1 1.01-3.7-.23-.38a9.75 9.75 0 01-1.5-5.16c0-5.39 4.39-9.77 9.79-9.77 2.61 0 5.07 1.02 6.92 2.87a9.72 9.72 0 012.86 6.9c0 5.4-4.39 9.81-9.75 9.81z"/></svg>
+          Enviar al entrenador
+        </button>
+      </div>
+    </div>
+
+    <div class="letra-card">
+      <div class="letra-badge">D</div>
+      <div class="letra-content">
+        <h3 class="letra-titulo">Deseo</h3>
+        <p class="letra-desc">¿En quién se va a convertir tu cliente? ¿Qué problema le vas a solucionar? Acá se mueven fibras emocionales — somos seres emocionales.</p>
+        <textarea id="aida-d" placeholder="Escribí sobre el deseo que despertás..."></textarea>
+        <br>
+        <button class="btn-enviar" onclick="enviar('aida-d','*AIDA – Deseo*')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 005.64 1.44h.01c6.54 0 11.85-5.3 11.85-11.84 0-3.16-1.24-6.13-3.38-8.44zM12.05 21.6a9.7 9.7 0 01-4.95-1.36l-.35-.21-3.8 1 1.01-3.7-.23-.38a9.75 9.75 0 01-1.5-5.16c0-5.39 4.39-9.77 9.79-9.77 2.61 0 5.07 1.02 6.92 2.87a9.72 9.72 0 012.86 6.9c0 5.4-4.39 9.81-9.75 9.81z"/></svg>
+          Enviar al entrenador
+        </button>
+      </div>
+    </div>
+
+    <div class="letra-card">
+      <div class="letra-badge">A</div>
+      <div class="letra-content">
+        <h3 class="letra-titulo">Acción</h3>
+        <p class="letra-desc">¿Cómo facilitás el paso a la acción? Métodos de pago, cuotas sin interés, llave contra llave, transferencia, efectivo...</p>
+        <textarea id="aida-a2" placeholder="Escribí cómo facilitás la acción..."></textarea>
+        <br>
+        <button class="btn-enviar" onclick="enviar('aida-a2','*AIDA – Acción*')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 005.64 1.44h.01c6.54 0 11.85-5.3 11.85-11.84 0-3.16-1.24-6.13-3.38-8.44zM12.05 21.6a9.7 9.7 0 01-4.95-1.36l-.35-.21-3.8 1 1.01-3.7-.23-.38a9.75 9.75 0 01-1.5-5.16c0-5.39 4.39-9.77 9.79-9.77 2.61 0 5.07 1.02 6.92 2.87a9.72 9.72 0 012.86 6.9c0 5.4-4.39 9.81-9.75 9.81z"/></svg>
+          Enviar al entrenador
+        </button>
+      </div>
+    </div>
+
+    <div class="letra-card">
+      <div class="letra-badge">P</div>
+      <div class="letra-content">
+        <h3 class="letra-titulo">Postventa</h3>
+        <p class="letra-desc">¿Cómo sostenés la relación con el cliente? Es más fácil venderle a alguien que ya le vendiste que volver a prospectar.</p>
+        <textarea id="aida-p" placeholder="Escribí cómo sostenés la relación..."></textarea>
+        <br>
+        <button class="btn-enviar" onclick="enviar('aida-p','*AIDA – Postventa*')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 005.64 1.44h.01c6.54 0 11.85-5.3 11.85-11.84 0-3.16-1.24-6.13-3.38-8.44zM12.05 21.6a9.7 9.7 0 01-4.95-1.36l-.35-.21-3.8 1 1.01-3.7-.23-.38a9.75 9.75 0 01-1.5-5.16c0-5.39 4.39-9.77 9.79-9.77 2.61 0 5.07 1.02 6.92 2.87a9.72 9.72 0 012.86 6.9c0 5.4-4.39 9.81-9.75 9.81z"/></svg>
+          Enviar al entrenador
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- INNOVACIÓN -->
+  <section>
+    <div class="section-kicker">Para cerrar</div>
+    <h2 class="section-title">¿En qué debo innovar?</h2>
+    <textarea id="innovar" placeholder="Escribí en qué creés que debés innovar..."></textarea>
+    <br>
+    <button class="btn-enviar" onclick="enviar('innovar','*¿En qué debo innovar?*')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0012.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 005.64 1.44h.01c6.54 0 11.85-5.3 11.85-11.84 0-3.16-1.24-6.13-3.38-8.44zM12.05 21.6a9.7 9.7 0 01-4.95-1.36l-.35-.21-3.8 1 1.01-3.7-.23-.38a9.75 9.75 0 01-1.5-5.16c0-5.39 4.39-9.77 9.79-9.77 2.61 0 5.07 1.02 6.92 2.87a9.72 9.72 0 012.86 6.9c0 5.4-4.39 9.81-9.75 9.81z"/></svg>
+      Enviar al entrenador
+    </button>
+  </section>
+
+  <!-- CIERRE / INSTAGRAM -->
+  <section class="cierre">
+    <div class="section-kicker">Material teórico</div>
+    <h2 class="section-title">¿Querés repasar la teoría?</h2>
+    <p class="section-desc" style="margin-left:auto;margin-right:auto;">Todo el contenido con el que armaste esta tarea está guardado en el Instagram del entrenador.</p>
+    <a class="btn-instagram" href="https://instagram.com/coaching_ont" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.38 3.85 3.9 2.31 7.15 2.16 8.42 2.1 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1018.16 12 6.16 6.16 0 0012 5.84zM12 16a4 4 0 114-4 4 4 0 01-4 4zm6.41-10.85a1.44 1.44 0 11-1.44-1.44 1.44 1.44 0 011.44 1.44z"/></svg>
+      Ir al Instagram del entrenador
+    </a>
+    <small>@coaching_ont</small>
+  </section>
+
+</main>
+
+<footer>Coaching · Crecer compartiendo</footer>
+
+<script>
+  const WHATSAPP_NUMERO = "5493704097249"; // 3704-09-7249 con código de Argentina
+
+  function enviar(id, etiqueta){
+    const campo = document.getElementById(id);
+    const texto = campo.value.trim();
+    const boton = campo.parentElement.querySelector('.btn-enviar');
+
+    if(!texto){
+      campo.focus();
+      campo.style.borderColor = '#E53E3E';
+      setTimeout(() => { campo.style.borderColor = ''; }, 1200);
+      return;
+    }
+
+    const mensaje = `${etiqueta}\n\n${texto}`;
+    const url = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+
+    if(boton){
+      const originalHTML = boton.innerHTML;
+      boton.classList.add('sent');
+      boton.innerHTML = '✓ Enviado';
+      setTimeout(() => {
+        boton.classList.remove('sent');
+        boton.innerHTML = originalHTML;
+      }, 2000);
+    }
+  }
+</script>
+
+</body>
+</html>
